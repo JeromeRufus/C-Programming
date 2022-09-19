@@ -152,7 +152,6 @@ void search(){
 			else{
 				printf("\n\t value is not present");
 			}
-	}
-	
+	}	
 }
 

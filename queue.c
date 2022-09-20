@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<conio.h>
-int queue[100],n,i,choice,front,rear,x,item;
+int queue[100],n,i,choice,front,rear,x,item,pos;
 void enQueue(void);
 void deQueue(void);
 void display(void);
 void peek(void);
-void delete(void);
+void peep(void);
 int main(){
 	front = -1;
 	rear = -1;
@@ -34,7 +34,7 @@ int main(){
 				break;
 			}
 			case 5:{
-				delete();
+				peep();
 				break;
 			}
 			case 6:{
@@ -74,11 +74,14 @@ void enQueue(){
 void deQueue(){
 	if(front<=-1){
 		printf("\n\t Queue is underflow");
+		
+		
 	}
 	else{
 		item = queue[front];
 		if(front == rear){
 			front=rear=-1;
+			printf("\n\t The dequeue value is %d",item);
 		}
 		else{
 			front++;
@@ -93,12 +96,34 @@ void display(){
 	}
 	else{
 		printf("\n\t The elements in queue ");
-		for(i=0;i<=rear;i++){
+		for(i=front;i<=rear;i++){
 			printf("\n%d",queue[i]);
 		}
 	}
 }
 void peek(){
+	if(front<=-1){
+		printf("\n\t Queue is underflow");
+	}
+	else{
+		printf("Queue's peek value is %d",queue[front]);
+	}
 }
-void delete(){
+void peep(){
+	if(front<=-1){
+		printf("\n\t queue is underflow");
+	}
+	else{
+		printf("Enter the position to search");
+		scanf("%d",&pos);
+		if(pos<=rear && pos>=0){
+			printf("\n\t Position of %d value is %d",pos,queue[pos]);
+		}
+		else{
+			printf("\n\t Position is invalid");
+		}
+	}
 }
+
+
+

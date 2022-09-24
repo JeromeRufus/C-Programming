@@ -1,18 +1,19 @@
 #include<stdio.h>
 #include<conio.h>
-int queue[100],n,i,choice,front,rear,x,item,pos;
+int queue[100],n,i,choice,front,rear,x,item,pos,upt;
 void enQueue(void);
 void deQueue(void);
 void display(void);
 void peek(void);
 void peep(void);
+void update(void);
 int main(){
 	front = -1;
 	rear = -1;
 	printf("\n\tEnter the Queue size ");
 	scanf("%d",&n);
 	printf("\n\t Choose the operation");
-	printf("\n\t 1.enQueue\n 2.deQueue\n 3.display\n 4.peek\n 5.delete\n");
+	printf("\n\t 1.enQueue\n 2.deQueue\n 3.display\n 4.peek\n 5.peep\n 6.update\n 7.Exit\n");
 	do{
 		printf("\n\t Enter the Choice");
 		scanf("%d",&choice);
@@ -38,17 +39,21 @@ int main(){
 				break;
 			}
 			case 6:{
+				update();
+				break;
+			}
+			case 7:{
 				printf("\n\t Exit point");
 				break;
 			}
 			default:{
-				printf("\n\t Please choose option (1/2/3/4/5)");
+				printf("\n\t Please choose option (1/2/3/4/5/6)");
 				break;
 			}
 		}
 		
 	}
-	while(choice!=6);
+	while(choice!=7);
 }
 void enQueue(){
 	if(rear>=n-1){
@@ -95,9 +100,9 @@ void display(){
 		printf("\n\tQueue is underflow");
 	}
 	else{
-		printf("\n\t The elements in queue ");
+		printf("\n\t The elements in queue \n");
 		for(i=front;i<=rear;i++){
-			printf("\n%d",queue[i]);
+			printf("%d\t",queue[i]);
 		}
 	}
 }
@@ -121,6 +126,24 @@ void peep(){
 		}
 		else{
 			printf("\n\t Position is invalid");
+		}
+	}
+}
+void update(){
+	if(front<=-1){
+		printf("\n\t queue is underflow");
+	}
+	else{
+		printf("Enter the position to update");
+		scanf("%d",&pos);
+		if(pos<=rear && pos>=0){
+			printf("\n\t Enter the value to update");
+			scanf("%d",&upt);
+			queue[pos]=upt;
+			display();
+		}
+		else{
+			printf("\n\t position is invalid");
 		}
 	}
 }

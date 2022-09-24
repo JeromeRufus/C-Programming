@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../SWSetup"
+		},
+		{
+			"path": "../tomcat"
+		},
+		{
+			"path": "../Software"
+		},
+		{
+			"path": "../Users"
+		},
+		{
+			"path": "../src"
+		}
+	],
+	"settings": {}
+}

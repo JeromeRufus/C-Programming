@@ -7,7 +7,7 @@ struct node{
 };
 struct node *p,*newnode;
 struct node *top = NULL;
-int choice,item,upt,pos;
+int choice,item,upt,pos,x;
 
 void push(void);
 void pop(void);
@@ -143,14 +143,13 @@ void search(){
 		scanf("%d",&pos);
 		while(p!=NULL){
 			if(p->data == pos){
-				flag++;
+				flag=1;
+				x=p->data;
 			}
-			else{
-				p=p->next;
-			}
+			p=p->next;
 		}
 		if(flag == 1){
-			printf("\n Value is present %d",p->data);
+			printf("\n Value is present %d",x);
 		}
 		else{
 			printf("\n value is not present");

@@ -106,7 +106,7 @@ void insertAtMiddle(){
 	else{
 		printf("\n Enter the data to insert at middle");
 		scanf("%d",&item);
-		printf("\n Enter the position to insert middle");
+		printf("\n Enter the value before you want to insert ");
 		scanf("%d",&key);
 		p=head;
 		newnode->data = item;
@@ -173,17 +173,18 @@ void delete_AtSpecificLoc(){
 		while(p!=NULL){
 			if(p->data == key)
 			{
-					if(p->data == NULL)
-					{
-						head = prev->data;
-						break;
-					}
-					else{
-						prev->next = p->next;
-					}
+//					if(p->data == NULL)
+//					{
+//						head = prev->data;
+//						break;
+//					}
+//					else{
+//						prev->next = p->next;
+//						
+//					}
+				prev->next = p->next;
 				printf("The Element Deleted is %d",p->data);
 				free(p);
-				break;
 			}
 			prev = p;
 			p=p->next;

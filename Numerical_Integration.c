@@ -21,14 +21,14 @@ int main(){
     for(i=1;i<n;i++){
     	x[i] = low+i*h;
     	y[i] = f(x[i]);
-    	sum = sum + 2*y[i];
-    	if((i%2)==0){
+    	sum = sum + 2*y[i];//trap
+    	if((i%2)==0){//simp1/3
     		sum1 = sum1+2*y[i];
 		}
 		else{
 			sum1 = sum1+4*y[i];
 		}
-		if((i%3)==0){
+		if((i%3)==0){//simp3/8
 			sum2 = sum2+2*y[i];
 		}
 		else{

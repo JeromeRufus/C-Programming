@@ -1,4 +1,4 @@
-#include<stdio.h>
+/*#include<stdio.h>
 #include<conio.h>
 #include<math.h>
 int fact(int x){
@@ -42,59 +42,51 @@ int main(){
 		printf("\n y1[%d]",i);
 		printf("%.4f",y1[i]);
 	}
-	printf("\n Total Frequency %0.4f",tot);
+	printf("\n Total Frequency %0.2f",tot);
+}*/
+
+
+
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+int fact(int x){
+	if(x==0||x==1){
+		return 1;
+	}
+	else{
+		return x * fact(x-1);
+	}
 }
-//#include<stdio.h>
-//#include<math.h>
-//#include<conio.h>
-//int fact(int x)
-//{
-//    if (x==0)
-//    return 1;
-//else
-//    return x*fact(x-1);
-//}
-//int main()
-//{
-//    int n,i;
-//    float sum=0,prod_x_y=0;
-//    int x[10],y[10];
-//    float y1[10];
-//    float mean1,po,p1,f1,fo;
-//    printf("\nEnter the number of values:\n");
-//    scanf("%d",&n);
-//    for(i=0;i<n;i++)
-//    {
-//      printf("x[%d]",i);
-//      scanf("%d",&x[i]);
-//    }
-//    printf("\nEnter the observed values of y\n");
-//    for(i=0;i<n;i++)
-//    {
-//      printf("\ny[%d]",i);
-//      scanf("%d",&y[i]);
-//    }
-//    
-//    for(i=0;i<n;i++)
-//    {
-//      sum+=y[i];
-//      prod_x_y+=x[i]*y[i];
-//    }
-//    printf("\nsum = %f",sum);
-//    printf("\nproduct = %f",prod_x_y);
-//    mean1=prod_x_y/sum;
-//    printf("\nmean=%f",mean1);
-//    po=exp(-mean1);
-//    fo=sum*po;
-//    printf("\nExpected frequency y");
-//    for(i=0;i<n;i++)
-//    {
-//    p1=(po*pow(mean1,i))/fact(i);
-//    f1=sum*p1;
-//    y1[i]=f1;
-//    printf("\ny1[%d]",i);
-//        printf("%.4f",y1[i]);
-//    }
-//    
-//    getch();
-//}
+int main(){
+	float x[100],y[100],sum,prod,mean,po,fo,p1,f1,y1[100];
+	int i,n;
+	printf("Enter the size \n");
+	scanf("%d",&n);
+	printf("Enter the x value ");
+	for(i=0;i<n;i++){
+		printf("x[%d]\t",i);
+		scanf("%f",&x[i]);
+	}
+	printf("Enter thte y value ");
+	for(i=0;i<n;i++){
+		printf("y[%d]\t",i);
+		scanf("%f",&y[i]);
+	}
+	for(i=0;i<n;i++){
+		sum+=y[i];
+		prod+=x[i]*y[i];
+	}
+	mean=prod/sum;
+	po=exp(-mean);
+	fo=sum*po;
+	printf("\n Execpted Frequency ");
+	for(i=0;i<n;i++){
+		p1 = (po*pow(mean,i))/fact(i);
+		f1=sum*p1;
+		y1[i]=f1;
+		printf("\n y[%d]\t",i);
+		printf("%0.3f",y1[i]);
+	}
+	
+}

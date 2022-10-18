@@ -6,9 +6,9 @@ struct node{
 	struct node *next;
 };
 struct node *head = NULL;
-struct node *prev,*p,*newnode;
-int item,choice,key,x;
-
+struct node *prev,*p,*newnode,*index=NULL;
+int i,j,item,choice,key,x,pos,temp;
+int array[100];
 void insertAtBeginning(void);
 void insertAtEnd(void);
 void insertAtMiddle(void);
@@ -17,12 +17,15 @@ void delete_AtBeginning(void);
 void delete_AtEnd(void);
 void delete_AtSpecificLoc(void);
 void search(void);
+void insertPosition(void);
+void sort(void);
+
 
 
 int main(){
 	
 	printf("\n\t choose the operation");
-	printf("\n\t 1.InsertAtBeginning\n\t 2.InsertAtEnd\n\t 3.InsertAtMiddle\n\t 4.Display\n\t 5.DeleteAtBeginnig\n\t 6.DeleteAtEnd\n\t 7.DeleteAtMiddle 8.Search\n\t 9.Exitpoint\n\t");
+	printf("\n\t 1.InsertAtBeginning\n\t 2.InsertAtEnd\n\t 3.InsertAtMiddle\n\t 4.Display\n\t 5.DeleteAtBeginnig\n\t 6.DeleteAtEnd\n\t 7.DeleteAtMiddle\n\t 8.Search\n\t 9.InsertPosition\n\t 10.Exitpoint\n\t");
 	do{
 		printf("\n Enter the choice");
 		scanf("%d",&choice);
@@ -56,16 +59,20 @@ int main(){
 				break;
 			}
 			case 8:{
-				search();
+				sort();
 				break;
 			}
 			case 9:{
+				insertPosition();
+				break;
+			}
+			case 10:{
 				printf("\n Exit point");
 				break;
 			}
 			
 		}	
-	}while(choice != 9);
+	}while(choice != 10);
 }
 void insertAtBeginning(){
 	newnode = (struct node*)malloc (sizeof(struct node));
@@ -106,7 +113,7 @@ void insertAtMiddle(){
 	else{
 		printf("\n Enter the data to insert at middle");
 		scanf("%d",&item);
-		printf("\n Enter the value before you want to insert ");
+		printf("\n Enter the position to insert middle");
 		scanf("%d",&key);
 		p=head;
 		newnode->data = item;
@@ -122,14 +129,42 @@ void insertAtMiddle(){
 		}
 	}
 }
+void insertPosition(){
+	newnode=(struct node*)malloc(sizeof(struct node));
+	printf("\n Enter the position to be inserted && Position should start with 1 ");
+	scanf("%d",&pos);
+	printf("\n Enter the data to be inserted ");
+	scanf("%d",&item);
+	p=head;
+	newnode->data=item;
+	for(i=2;i<=pos;i++){
+		if(pos==1){
+			if(head == NULL){
+				newnode->next=NULL;
+				head = newnode;
+				break;
+			}
+			else{
+				newnode->next=head;
+				head=newnode;
+				break;
+			}
+		}
+			newnode->next=p->next;
+			p->next=newnode;
+			break;
+		p=p->next;
+	}	
+}
 void display(){
 	if(head == NULL){
 		printf("\n List empty");
 	}
 	else{
 		p=head;
+		printf("\n The nodes in singly linked list ");
 		while(p!=NULL){
-			printf("\n The element %d",p->data);
+			printf("\t %d \t",p->data);
 			p=p->next;
 		}
 	}
@@ -166,32 +201,32 @@ void delete_AtSpecificLoc(){
 		printf("\n list is empty");
 	}
 	else{
-		printf("\n Enter the position ");
-		scanf("%d",&key);
+		printf("\n Enter the position to delete ");
+		scanf("%d",&pos);
 		p=head;
 		prev = NULL;
-		while(p!=NULL){
-			if(p->data == key)
-			{
-//					if(p->data == NULL)
-//					{
-//						head = prev->data;
-//						break;
-//					}
-//					else{
-//						prev->next = p->next;
-//						
-//					}
-				prev->next = p->next;
-				printf("The Element Deleted is %d",p->data);
-				free(p);
+		for(i=1;i<=pos;i++){
+			if(pos == 1){
+				if(p->next == NULL){
+					head=NULL;
+					printf("\n The element deleted %d ",p->data);
+					free(p);
+				}
+				else{
+					head = p->next;
+					printf("\n The element deleted %d ",p->data);
+					free(p);
+				}
 			}
-			prev = p;
-			p=p->next;
-			flag=1;
-		}
-		if(flag == 0){
-			printf("\n The value is not present");
+			else{
+				prev = p;
+				p = p->next;
+				prev->next = p->next;
+				printf("\n The element deleted %d ",p->data);
+				free(p);
+				break;
+			}
+			
 		}
 	}
 }
@@ -207,7 +242,8 @@ void search(){
 		while(p!=NULL){
 			if(p->data == key){
 				flag=1;
-				x=p->data;	
+				x=p->data;
+				
 			}
 			p=p->next;
 		}
@@ -219,3 +255,26 @@ void search(){
 		}
 	}
 }
+void sort(){
+	if(head == NULL){
+		printf("\n List is empty ");
+	}
+	else{
+		p=head;
+		while(p!=NULL){
+			index=p->next;
+			while(index!=NULL){
+				if(p->data > index->data){
+					temp = p->data;
+					p->data = index->data;
+					index->data = temp;
+				}
+				index=index->next;			
+			}
+			printf(" %d \n ",p->data);
+			p=p->next;
+		
+		}
+	}
+}
+

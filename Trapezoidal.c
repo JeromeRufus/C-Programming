@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
 float f(float x);
-
 float f(float x){
 	return sqrt(sin(x)+cos(x));
 }

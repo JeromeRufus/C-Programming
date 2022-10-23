@@ -6,7 +6,7 @@ struct node{
 	struct node *next;
 };
 struct node *head = NULL;
-struct node *prev,*p,*newnode,*index=NULL;
+struct node *prev,*p,*newnode;
 int i,j,item,choice,key,x,pos,temp;
 int array[100];
 void insertAtBeginning(void);
@@ -59,7 +59,7 @@ int main(){
 				break;
 			}
 			case 8:{
-				sort();
+				//sort();
 				break;
 			}
 			case 9:{
@@ -221,13 +221,12 @@ void delete_AtSpecificLoc(){
 			else{
 				prev = p;
 				p = p->next;
+				break;
+			}
+		}
 				prev->next = p->next;
 				printf("\n The element deleted %d ",p->data);
 				free(p);
-				break;
-			}
-			
-		}
 	}
 }
 void search(){
@@ -255,26 +254,26 @@ void search(){
 		}
 	}
 }
-void sort(){
-	if(head == NULL){
-		printf("\n List is empty ");
-	}
-	else{
-		p=head;
-		while(p!=NULL){
-			index=p->next;
-			while(index!=NULL){
-				if(p->data > index->data){
-					temp = p->data;
-					p->data = index->data;
-					index->data = temp;
-				}
-				index=index->next;			
-			}
-			printf(" %d \n ",p->data);
-			p=p->next;
-		
-		}
-	}
-}
+//void sort(){
+//	if(head == NULL){
+//		printf("\n List is empty ");
+//	}
+//	else{
+//		p=head;
+//		while(p!=NULL){
+//			index=p->next;
+//			while(index!=NULL){
+//				if(p->data > index->data){
+//					temp = p->data;
+//					p->data = index->data;
+//					index->data = temp;
+//				}
+//				index=index->next;			
+//			}
+//			printf(" %d \n ",p->data);
+//			p=p->next;
+//		
+//		}
+//	}
+//}
 

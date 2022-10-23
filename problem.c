@@ -100,7 +100,7 @@ void deleteSpecific(){
 		scanf("%d",&pos);
 		p=head;
 		prev = NULL;
-		for(i=0;i<=pos;i++){
+		for(i=0;i<pos;i++){
 			if(pos == 0){
 				if(p->next == NULL){
 					head=NULL;
@@ -119,24 +119,18 @@ void deleteSpecific(){
 			}
 			else if(pos == i){
 				prev = p;
-				p = p->next;
 				prev->next = p->next;
+				p = p->next;
 				printf("\n The element deleted %d ",p->data);
 				count--;
 				printf("\n Count value is %d ",count);
 				free(p);
 				break;
 			}
-//			else{
-//				prev = p;
-//				p = p->next;
-//				prev->next = p->next;
-//				printf("\n The element deleted %d ",p->data);
-//				count--;
-//				printf("\n Count value is %d ",count);
-//				free(p);
-//				break;
-//			}
+			else{
+				p=p->next;
+			}
+			
 		}
 	}
 }

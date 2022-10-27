@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<conio.h>
 int main(){
-	int p[100],bt[100],wt[100],n,i,j,temp=0,awt,atat,tat[100];
+	int p[100],bt[100],wt[100],n,i,j,temp=0,tat[100];
+	float awt,atat;
 	printf("\n Enter the number of process ");
 	scanf("%d",&n);
 	printf("\n Enter the process time ");
@@ -37,6 +38,6 @@ int main(){
 		atat+=tat[i];
 		printf("%d\t\t %d\t\t %d\t\t %d\n",p[i],bt[i],wt[i],tat[i]);	
 	}
-	printf("\n Average Waiting time is %d ",awt/n);
-	printf("\n Average Turn Around Time is %d",atat/n);
+	printf("\n Average Waiting time is %f ",awt/n);
+	printf("\n Average Turn Around Time is %f",atat/n);
 }

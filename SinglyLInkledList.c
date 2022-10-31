@@ -19,6 +19,7 @@ void delete_AtSpecificLoc(void);
 void search(void);
 void insertPosition(void);
 void sort(void);
+void deleteMiddle(void);
 
 
 
@@ -276,4 +277,7 @@ void search(){
 //		}
 //	}
 //}
+void deleteMiddle(void){
+	
+}
 

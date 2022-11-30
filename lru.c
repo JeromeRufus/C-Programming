@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 int main(){
-	int i,j,k,min,rs[25],m[10],count[10],flag[25],n,f,pf=0,next=0;
+	int i,j,k,min,rs[25],m[10],count[10],flag[25],n,f,pf=0,ph=0,next=0;
 	printf("\n Enter the length of reference string ");
 	scanf("%d",&n);
 	printf("\n Enter the reference string ");
@@ -22,6 +22,7 @@ int main(){
 				flag[i]=1;
 				count[j]=next;
 				next++;
+				break;
 			}
 		}
 		if(flag[i]==0){
@@ -32,13 +33,13 @@ int main(){
 			}
 			else{
 				min=0;
-				for(j=1;j<f;j++){
-					if(count[min] > count[j]){
-						min=j;
-						m[min]=rs[i];
-						count[min]=next;
-						next++;
+				for(j=1;j<f;j++){ 
+		 			if(count[min] > count[j]){
+						 min=j;
 					}
+					m[min]=rs[i];
+					count[min]=next;
+					next++;
 				}	
 			}
 			pf++;
@@ -52,5 +53,5 @@ int main(){
 		printf("\n");
 	}
 	printf("\n The total no.of.pagefault is %d ",pf);
-	
+	printf("\n The total no.of.pagehit is %d ",ph);
 }

@@ -8,7 +8,7 @@ struct tree{
 };
 struct tree *root = NULL;
 struct tree *cr,*p,*newnode,*min,*max,*tmp;
-int choice,item,ma,mx;
+int choice,item,ma,mx,key;
 void insert(){
 	newnode=(struct tree*)malloc(sizeof(struct tree));
 	printf("\n Enter the data to be insert ");
@@ -136,6 +136,35 @@ struct tree *deletion(struct tree *root,int val)
 	}
 	return root;
 }
+void search(int key){
+	tmp=root;
+	int flag=0;
+	if(root==NULL){
+		printf("Tree is Empty");
+		return;
+	}
+	else{
+
+		while(tmp!=NULL){
+			if(key == tmp->data){
+				printf("The value %d is present",tmp->data);
+				flag=1;
+				break;
+			}
+			else if(key>tmp->data){
+				tmp=tmp->right;
+			}
+			else if(key<tmp->data){
+				tmp=tmp->left;
+			}
+	}
+}
+		if(flag==0){
+				printf("The value %d is not Present",key);
+				return;
+
+		}
+	}
 void main(){
 	printf("\n Binary Search Tree ");
 	printf("\n Choose the operation ");
@@ -184,9 +213,15 @@ void main(){
 					break;
 				}
 			}
+			case 8:{
+				printf("\n Enter the value to search ");
+				scanf("%d",&key);
+				search(key);
+				break;
+			}
 		}
 		
-	}while(choice != 8);
+	}while(choice != 9);
 }
 
 

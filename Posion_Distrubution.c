@@ -59,7 +59,7 @@ int fact(int x){
 	}
 }
 int main(){
-	float x[100],y[100],sum,prod,mean,po,fo,p1,f1,y1[100];
+	float x[100],y[100],sum,prod,mean,po,fo,p1,f1,y1[100],tot;
 	int i,n;
 	printf("Enter the size \n");
 	scanf("%d",&n);
@@ -85,8 +85,10 @@ int main(){
 		p1 = (po*pow(mean,i))/fact(i);
 		f1=sum*p1;
 		y1[i]=f1;
+		tot+=y1[i];
 		printf("\n y[%d]\t",i);
 		printf("%0.3f",y1[i]);
 	}
+	printf("\n Total frequency %0.3f",tot);
 	
 }

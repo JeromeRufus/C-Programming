@@ -1,6 +1,6 @@
 #include<stdio.h>
 void main(){
-	int i,j,k,f,pf=0,count=0,rs[25],m[10],n;
+	int i,j,k,f,pf=0,count=0,rs[25],m[10],n,ph=0;
 	printf("\n Enter the length of reference string ");
 	scanf("%d",&n);
 	printf("\n Enter the reference string ");
@@ -23,11 +23,17 @@ void main(){
 				m[count++]=rs[i];
 				pf++;
 			}
+			else{
+				ph++;
+			}
 			for(j=0;j<f;j++){
 				printf("\t%d",m[j]);
 			}
 			if(k==f){
 				printf("\tPF NO.%d",pf);
+			}
+			else{
+				printf("\tPH NO.%d",ph);
 			}
 				printf("\n");
 			if(count==f){
@@ -36,4 +42,5 @@ void main(){
 		}
 		
 		printf("\n The number of page faults using FIFO are %d ",pf);
+		printf("\n The number of page hits using FIFO are %d ",ph);
 }
